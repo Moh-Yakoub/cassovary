@@ -1,0 +1,22 @@
+This is important if you want to make a scala project into eclipse project
+------------------------------------------------------------------------------
+1 - Use sbteclipsify 
+2 - After download , noting it uses sbt 0.10.1 REMOVE the two files ~/.sbt/
+and ~/ivy2
+3 - run sbt update
+4 - in cassovary open "project" folder , create a file named "build.sbt":
+
+copy the following in it
+
+#Project properties
+#Tue Mar 08 09:12:18 CET 2011
+sbt.version=0.10.1
+
+
+This to prevent it from using latest sbt
+
+5 - run sbt update 
+6 - run sbt test
+7 - run sbt package
+8 - run sbt
+type eclipse
