@@ -95,4 +95,19 @@ object TestGraphs {
     }
     ArrayBasedDirectedGraph( () => nodes.iterator, StoredGraphDir.BothInOut)
   }
+  
+  def generateErdosRenyi(numNodes:Int , prob:Double)={
+    //Here prob is the probability between two edges
+    //we use a very bad way to get randomness :(
+    val ones = (prob*10.0).asInstanceOf[Int];
+    val list = List.fill(ones)(1)++List.fill(10-ones)(0);
+    val nodes = (1 to numNodes).toList
+    val rand = new Random
+    val edgesNodes = (1 to numNodes).toList map{source =>
+      val chosen = for(i<-List.range(1,numNodes) if(list(rand.nextInt(9))==1)) yield i
+      TestNode(source,chosen,chosen)
+    }
+    TestGraph(edgesNodes: _*)
+    
+  }
 }
